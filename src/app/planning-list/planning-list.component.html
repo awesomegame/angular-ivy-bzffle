@@ -1,0 +1,56 @@
+<div>
+  <div class="nextDay">
+    <a href="planning/{{ nextDayPath }}"><< {{ nextDay }}</a>
+  </div>
+  <div class="prevDay">
+    <a href="planning/{{ prevDayPath }}">{{ prevDay }} >></a>
+  </div>
+</div>
+<div *ngIf="mode == 'planning'">
+  <table>
+    <thead>
+      <tr>
+        <td>פעם אחרונה</td>
+        <td>עבודה</td>
+        <td>לקוח</td>
+        <td>סירה</td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let plan of plans" class="{{ plan.class }}">
+        <td>{{ plan.lastDate }}</td>
+        <td>{{ plan.serviceType }}</td>
+        <td>{{ plan.yacht.client }}</td>
+        <td>{{ plan.yacht.name }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div *ngIf="mode == 'history'">
+  <table>
+    <thead>
+      <tr>
+        <td>ממוצה לשעה</td>
+        <td>מחיר</td>
+        <td>שעות עבודה</td>
+        <td>זמן עבודה אמיתי</td>
+        <td>ארחת זמנים</td>
+        <td>עבודה</td>
+        <td>צוות</td>
+        <td>סירה</td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let job of jobs">
+        <td>{{ job.pricePerHour }}</td>
+        <td>{{ job.priceTotal }}</td>
+        <td>{{ job.totalWorkTime }}</td>
+        <td>{{ job.realTime }}</td>
+        <td>{{ job.estTime }}</td>
+        <td>{{ job.service }}</td>
+        <td>{{ job.crew }}</td>
+        <td>{{ job.yacht }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

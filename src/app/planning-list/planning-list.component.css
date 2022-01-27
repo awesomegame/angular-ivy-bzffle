@@ -1,0 +1,38 @@
+td {
+  border: 1px;
+  border-style: solid;
+  text-align: right;
+  padding: 4px;
+}
+
+th {
+  border: 1px;
+  border-style: solid;
+  text-align: right;
+  padding: 4px;
+}
+
+table {
+  border: 1px;
+  border-style: solid;
+}
+
+.unknown {
+  background-color: lightgrey;
+}
+
+.ok {
+  background-color: #aae0aa;
+}
+
+.alert {
+  background-color: pink;
+}
+
+.nextDay {
+  float: left;
+}
+
+.prevDay {
+  float: right;
+}

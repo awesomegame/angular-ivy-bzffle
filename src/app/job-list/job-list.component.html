@@ -1,0 +1,41 @@
+<div>
+  <div>{{ getUserPrice(jobs, user) }} : {{ user }}</div>
+</div>
+<div *ngFor="let day of days" class="day">
+  <div>
+    <div class="date">{{ day.date }}</div>
+    <div>{{ day.total }} :ס"כ</div>
+    <div>{{ getUserPrice(day.jobs, user) }} : {{ user }}</div>
+  </div>
+  <div class="hoursTable">
+    <table>
+      <thead>
+        <th>מחיר לשעה</th>
+        <th>מחיר</th>
+        <th>ס"כ שעות</th>
+        <th>זמן עבודה</th>
+        <th>ארחת זמנים</th>
+        <th>עבודות</th>
+        <th>צוות</th>
+        <th>סירה</th>
+      </thead>
+      <tbody>
+        <tr
+          *ngFor="let job of day.jobs"
+          class="{{ job.pricePerHour < hourThreshold ? 'alert' : '' }}"
+        >
+          <td>{{ job.pricePerHour }}</td>
+          <td>
+            {{ getPrice(job) }}
+          </td>
+          <td>{{ job.totalWorkTime }}</td>
+          <td>{{ job.realTime }}</td>
+          <td>{{ job.estTime }}</td>
+          <td>{{ job.service }}</td>
+          <td>{{ job.crew }}</td>
+          <td>{{ job.yacht }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

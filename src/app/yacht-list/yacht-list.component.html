@@ -1,0 +1,10 @@
+<h2>Yachts</h2>
+
+<div *ngFor="let yacht of yachts">
+  <h3>
+    <a [title]="yacht.description" [routerLink]="['/yachts', yacht.id]">
+      {{ yacht.name }} {{ yacht.dock }} {{ yacht.client }}
+    </a>
+  </h3>
+  <p *ngIf="yacht.description">Description: {{ yacht.description }}</p>
+</div>

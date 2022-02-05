@@ -193,7 +193,7 @@ export var services = [
     yahctId: 20,
     serviceType: 1,
     recurrence: 14,
-    lastDate: '01/06/2022',
+    lastDate: '02/03/2022',
   },
   {
     yahctId: 20,

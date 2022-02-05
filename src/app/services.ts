@@ -48,25 +48,25 @@ export var services = [
     yahctId: 6,
     serviceType: 1,
     recurrence: 14,
-    lastDate: '01/06/2022',
+    lastDate: '01/20/2022',
   },
   {
     yahctId: 6,
     serviceType: 2,
     recurrence: 14,
-    lastDate: '01/06/2022',
+    lastDate: '01/20/2022',
   },
   {
     yahctId: 7,
     serviceType: 1,
     recurrence: 14,
-    lastDate: '01/02/2022',
+    lastDate: '01/18/2022',
   },
   {
     yahctId: 7,
     serviceType: 2,
     recurrence: 14,
-    lastDate: '01/02/2022',
+    lastDate: '01/18/2022',
   },
   {
     yahctId: 8,
@@ -199,7 +199,7 @@ export var services = [
     yahctId: 20,
     serviceType: 2,
     recurrence: 14,
-    lastDate: '01/06/2022',
+    lastDate: '02/03/2022',
   },
   {
     yahctId: 21,
@@ -215,13 +215,13 @@ export var services = [
   {
     yahctId: 22,
     serviceType: 1,
-    lastDate: '01/04/2022',
+    lastDate: '01/25/2022',
   },
   {
     yahctId: 22,
     serviceType: 2,
     recurrence: 7,
-    lastDate: '12/27/2021',
+    lastDate: '03/02/2022',
   },
   {
     yahctId: 23,
@@ -233,13 +233,13 @@ export var services = [
     yahctId: 24,
     serviceType: 1,
     recurrence: 21,
-    lastDate: '12/31/2021',
+    lastDate: '02/02/2022',
   },
   {
     yahctId: 24,
     serviceType: 2,
     recurrence: 21,
-    lastDate: '12/31/2021',
+    lastDate: '02/02/2022',
   },
   {
     yahctId: 25,
@@ -257,5 +257,17 @@ export var services = [
     yahctId: 26,
     serviceType: 2,
     lastDate: '01/12/2022',
+  },
+  {
+    yahctId: 27,
+    serviceType: 1,
+    recurrence: 7,
+    lastDate: '02/02/2022',
+  },
+  {
+    yahctId: 27,
+    serviceType: 2,
+    recurrence: 7,
+    lastDate: '02/02/2022',
   },
 ];

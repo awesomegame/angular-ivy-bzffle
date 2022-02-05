@@ -170,4 +170,9 @@ export const yachts = [
     dock: 'I',
     size: 45,
   },
+  {
+    id: 27,
+    client: 'סיילור',
+    name: 'Fana',
+  },
 ];

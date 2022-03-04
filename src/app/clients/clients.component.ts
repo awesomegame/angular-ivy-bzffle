@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
-import { HttpParams } from '@angular/common/http';
 
 @Component({
   selector: 'app-clients',
@@ -16,10 +15,16 @@ export class ClientsComponent implements OnInit {
 
   ngOnInit() {}
   onSubmit(): void {
-    var params = {params: new HttpParams().set("id", 5)}
-      this.http.post(
+    const headers = { 'content-type': 'application/json' };
+    const body = JSON.stringify({ id: '6', name: this.clientForm.value.name });
+    console.log(body);
+
+    this.http
+      .post(
         'https://8edsojoa99.execute-api.us-east-1.amazonaws.com/prod/addOwner',
-        params
-      );
+        body,
+        { headers: headers }
+      )
+      .subscribe((data) => console.log(data));
   }
 }

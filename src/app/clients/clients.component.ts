@@ -19,10 +19,12 @@ export class ClientsComponent implements OnInit {
   }
   onSubmit(): void {
     const headers = { 'content-type': 'application/json' };
-    var id =
-      parseInt(
-        this.clients.map((it) => it.id).reduce((a, b) => (a > b ? a : b))
-      ) + 1;
+    var id = 1;
+    if (this.clients.length > 0)
+      id =
+        this.clients
+          .map((it) => parseInt(it.id))
+          .reduce((a, b) => (a > b ? a : b)) + 1;
 
     const body = JSON.stringify({
       id: id.toString(),
@@ -37,7 +39,7 @@ export class ClientsComponent implements OnInit {
       )
       .subscribe((data) => {
         this.load();
-        this.clientForm =  this.formBuilder.group({
+        this.clientForm = this.formBuilder.group({
           name: '',
         });
       });

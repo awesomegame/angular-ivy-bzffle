@@ -1,10 +1,10 @@
 <h2>לקוח חדש</h2>
 <form [formGroup]="clientForm" (ngSubmit)="onSubmit()">
   <div>
-    <label for="name"> שם </label>
+    <button class="button" type="submit">הוסיף</button>
     <input id="name" type="text" formControlName="name" />
+    <label for="name"> שם </label>
   </div>
-  <button class="button" type="submit">הוסיף</button>
 </form>
 <div *ngFor="let client of clients">
   <div>

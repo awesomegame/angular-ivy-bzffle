@@ -6,3 +6,8 @@
   </div>
   <button class="button" type="submit">הוסיף</button>
 </form>
+<div *ngFor="let client of clients">
+  <div>
+    <a href="/clients/{{ client.id }}">{{ client.name }}</a>
+  </div>
+</div>

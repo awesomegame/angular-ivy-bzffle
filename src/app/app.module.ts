@@ -11,6 +11,7 @@ import { YachtDetailsComponent } from './yacht-details/yacht-details.component';
 import { PlanningListComponent } from './planning-list/planning-list.component';
 import { PlanningDetailsComponent } from './planning-details/planning-details.component';
 import { ClientsComponent } from './clients/clients.component';
+import { ClientsDetailsComponent } from './clients-details/clients-details.component';
 
 @NgModule({
   imports: [
@@ -23,6 +24,7 @@ import { ClientsComponent } from './clients/clients.component';
       { path: 'yachts/:yachtId', component: YachtDetailsComponent },
       { path: 'planning', component: PlanningListComponent },
       { path: 'clients', component: ClientsComponent },
+      { path: 'clients/:clientId', component: ClientsDetailsComponent },
       {
         path: 'planning/:month/:day/:year',
         component: PlanningListComponent,
@@ -32,6 +34,7 @@ import { ClientsComponent } from './clients/clients.component';
   declarations: [
     AppComponent,
     ClientsComponent,
+    ClientsDetailsComponent,
     YachtListComponent,
     JobListComponent,
     YachtDetailsComponent,

@@ -19,8 +19,15 @@ export class ClientsComponent implements OnInit {
   }
   onSubmit(): void {
     const headers = { 'content-type': 'application/json' };
-    const body = JSON.stringify({ id: '6', name: this.clientForm.value.name });
-    console.log(body);
+    var id =
+      parseInt(
+        this.clients.map((it) => it.id).reduce((a, b) => (a > b ? a : b))
+      ) + 1;
+
+    const body = JSON.stringify({
+      id: id.toString(),
+      name: this.clientForm.value.name,
+    });
 
     this.http
       .post(
@@ -28,7 +35,12 @@ export class ClientsComponent implements OnInit {
         body,
         { headers: headers }
       )
-      .subscribe((data) => console.log(data));
+      .subscribe((data) => {
+        this.load();
+        this.clientForm =  this.formBuilder.group({
+          name: '',
+        });
+      });
   }
 
   load(): void {
@@ -39,12 +51,10 @@ export class ClientsComponent implements OnInit {
       .post(
         'https://8edsojoa99.execute-api.us-east-1.amazonaws.com/prod/getOwners',
         body,
-        { headers: headers }
+        { headers: headers, observe: 'body' }
       )
       .subscribe((data) => {
-        console.log(data);
-        this.clients = Object.keys(data).map((key) => data[key]);
-        console.log(this.clients);
+        this.clients = JSON.parse(data['body']);
       });
   }
 }

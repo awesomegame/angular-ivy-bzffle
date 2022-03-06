@@ -6,7 +6,7 @@
     <label for="name"> שם </label>
   </div>
 </form>
-<div *ngFor="let client of clients">
+<div *ngFor="let client of data.clients">
   <div>
     <a href="/clients/{{ client.id }}">{{ client.name }}</a>
   </div>

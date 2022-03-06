@@ -13,6 +13,8 @@ import { PlanningDetailsComponent } from './planning-details/planning-details.co
 import { ClientsComponent } from './clients/clients.component';
 import { ClientsDetailsComponent } from './clients-details/clients-details.component';
 
+import { DataService } from './data.service';
+
 @NgModule({
   imports: [
     BrowserModule,
@@ -42,5 +44,6 @@ import { ClientsDetailsComponent } from './clients-details/clients-details.compo
     PlanningDetailsComponent,
   ],
   bootstrap: [AppComponent],
+  providers: [DataService],
 })
 export class AppModule {}

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
+import { DataService } from '../data.service';
 
 @Component({
   selector: 'app-clients',
@@ -12,10 +13,14 @@ export class ClientsComponent implements OnInit {
     name: '',
   });
   clients = [];
-  constructor(private formBuilder: FormBuilder, private http: HttpClient) {}
+  constructor(
+    private formBuilder: FormBuilder,
+    private http: HttpClient,
+    private data: DataService
+  ) {}
 
   ngOnInit() {
-    this.load();
+    this.clients = this.data.getClients();
   }
   onSubmit(): void {
     const headers = { 'content-type': 'application/json' };

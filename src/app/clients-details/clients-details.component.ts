@@ -24,8 +24,23 @@ export class ClientsDetailsComponent implements OnInit {
     this.route.params.subscribe((param) => {
       this.client.id = param.clientId;
     });
+    this.load();
   }
 
   ngOnInit() {}
   onSubmit() {}
+  load(): void {
+    const headers = { 'content-type': 'application/json' };
+    const body = JSON.stringify({ id: this.client.id });
+
+    this.http
+      .post(
+        'https://8edsojoa99.execute-api.us-east-1.amazonaws.com/prod/getClientDetails',
+        body,
+        { headers: headers, observe: 'body' }
+      )
+      .subscribe((data) => {
+        this.client = JSON.parse(data['body'])[0];
+      });
+  }
 }

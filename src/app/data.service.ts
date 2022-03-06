@@ -3,18 +3,43 @@ import { HttpClient } from '@angular/common/http';
 
 @Injectable()
 export class DataService {
+  servicePeriods = [
+    {
+      value: 0,
+      name: 'לא צריך',
+    },
+    {
+      value: 7,
+      name: 'פעם בשבוע',
+    },
+    {
+      value: 14,
+      name: 'פעם בשבועיים',
+    },
+    {
+      value: 30,
+      name: 'פעם בחודש',
+    },
+    {
+      value: undefined,
+      name: 'לפי צורך',
+    },
+  ];
+
   clients;
   ships;
+  services;
   private _isReady = {
     clients: false,
-    shipd: false,
+    ships: false,
+    services: false,
     callbacks: [],
     subscribe(cb) {
       this.callbacks.push(cb);
     },
     check(type) {
       this[type] = true;
-      if (this.clients && this.ships)
+      if (this.clients && this.ships && this.services)
         this.callbacks.forEach((cb) => cb.onDataReady());
     },
   };
@@ -25,6 +50,22 @@ export class DataService {
 
   subscribe(cb) {
     this._isReady.subscribe(cb);
+  }
+
+  loadServices() {
+    const headers = { 'content-type': 'application/json' };
+    const body = '{}';
+
+    this.http
+      .post(
+        'https://8edsojoa99.execute-api.us-east-1.amazonaws.com/prod/getServices',
+        body,
+        { headers: headers, observe: 'body' }
+      )
+      .subscribe((data) => {
+        this.services = JSON.parse(data['body']);
+        this._isReady.check('services');
+      });
   }
 
   loadClients() {
@@ -63,6 +104,7 @@ export class DataService {
             .ships.push(ship)
         );
         this._isReady.check('ships');
+        this.loadServices();
       });
   }
 
@@ -117,6 +159,19 @@ export class DataService {
           .ships.push(this.ships.find((it) => it.id == ship.id));
         cb();
       });
+  }
+
+  saveShip(ship) {
+    const headers = { 'content-type': 'application/json' };
+    const body = JSON.stringify(ship);
+
+    this.http
+      .post(
+        'https://8edsojoa99.execute-api.us-east-1.amazonaws.com/prod/saveShip',
+        body,
+        { headers: headers }
+      )
+      .subscribe((data) => {});
   }
 
   getClient(id) {

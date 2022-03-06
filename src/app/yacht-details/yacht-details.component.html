@@ -1,3 +1,29 @@
-<p>
-yacht-details works!
-</p>
+<h2>{{ ship.name }}</h2>
+<div>
+  <div>
+    <div>{{ ship.dock }}</div>
+    <div>רציף</div>
+  </div>
+  <div>
+    <div>{{ ship.size }}</div>
+    <div>גודל</div>
+  </div>
+  <div>
+    <div>{{ ship.description }}</div>
+    <div>הוראות</div>
+  </div>
+</div>
+<form [formGroup]="shipForm" (ngSubmit)="onSubmit()">
+  <label
+    formArrayName="services"
+    *ngFor="let service of formServices.controls; let i = index"
+  >
+    <select [formControlName]="i" [(ngModel)]="selectedService[i]">
+      <option *ngFor="let rec of data.servicePeriods" [ngValue]="rec.value">
+        {{ rec.name }}
+      </option>
+    </select>
+    {{ data.services[i].name }}
+  </label>
+  <button>שמור</button>
+</form>

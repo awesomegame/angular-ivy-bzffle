@@ -23,7 +23,7 @@ import { DataService } from './data.service';
     RouterModule.forRoot([
       { path: '', component: JobListComponent },
       { path: 'yachts', component: YachtListComponent },
-      { path: 'yachts/:yachtId', component: YachtDetailsComponent },
+      { path: 'yachts/:shipId', component: YachtDetailsComponent },
       { path: 'planning', component: PlanningListComponent },
       { path: 'clients', component: ClientsComponent },
       { path: 'clients/:clientId', component: ClientsDetailsComponent },

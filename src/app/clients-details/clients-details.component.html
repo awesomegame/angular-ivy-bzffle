@@ -1,6 +1,8 @@
 <h2>{{ client.name }}</h2>
 <div *ngFor="let ship of client.ships" class="shipList">
-  <div>{{ ship.name }}</div>
+  <div>
+    <a href="/yachts/{{ ship.id }}">{{ ship.name }}</a>
+  </div>
   <div>{{ ship.dock }}</div>
   <div>{{ ship.size }}</div>
   <div>{{ ship.description }}</div>

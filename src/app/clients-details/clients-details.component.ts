@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { FormBuilder } from '@angular/forms';
-import { HttpClient } from '@angular/common/http';
 import { DataService } from '../data.service';
 
 @Component({
@@ -20,7 +19,6 @@ export class ClientsDetailsComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private formBuilder: FormBuilder,
-    private http: HttpClient,
     public data: DataService
   ) {
     this.data.subscribe(this);

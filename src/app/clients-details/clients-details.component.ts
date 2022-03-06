@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { FormBuilder } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
+import { DataService } from '../data.service';
 
 @Component({
   selector: 'app-clients-details',
@@ -19,28 +20,28 @@ export class ClientsDetailsComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private formBuilder: FormBuilder,
-    private http: HttpClient
+    private http: HttpClient,
+    public data: DataService
   ) {
-    this.route.params.subscribe((param) => {
-      this.client.id = param.clientId;
-    });
-    this.load();
+    this.data.subscribe(this);
   }
 
+  onDataReady() {
+    this.route.params.subscribe((param) => {
+      this.client = this.data.getClient(param.clientId);
+    });
+  }
   ngOnInit() {}
-  onSubmit() {}
-  load(): void {
-    const headers = { 'content-type': 'application/json' };
-    const body = JSON.stringify({ id: this.client.id });
-
-    this.http
-      .post(
-        'https://8edsojoa99.execute-api.us-east-1.amazonaws.com/prod/getClientDetails',
-        body,
-        { headers: headers, observe: 'body' }
-      )
-      .subscribe((data) => {
-        this.client = JSON.parse(data['body'])[0];
+  onSubmit() {
+    var ship = this.shipForm.value;
+    ship.clientId = this.client.id;
+    this.data.addShip(ship, () => {
+      this.shipForm = this.formBuilder.group({
+        name: '',
+        dock: '',
+        size: '',
+        description: '',
       });
+    });
   }
 }

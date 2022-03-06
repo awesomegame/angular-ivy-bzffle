@@ -1,26 +1,27 @@
 <h2>{{ client.name }}</h2>
-<div *ngFor="let ship of client.ships">
+<div *ngFor="let ship of client.ships" class="shipList">
   <div>{{ ship.name }}</div>
   <div>{{ ship.dock }}</div>
   <div>{{ ship.size }}</div>
   <div>{{ ship.description }}</div>
 </div>
+<hr />
 <form [formGroup]="shipForm" (ngSubmit)="onSubmit()">
   <div>
-    <input id="name" type="text" formControlName="name" />
-    <label for="name"> שם </label>
+    <div><input id="name" type="text" formControlName="name" /></div>
+    <div class="label"><label for="name"> שם </label></div>
   </div>
   <div>
-    <input id="name" type="text" formControlName="dock" />
-    <label for="name"> רציף </label>
+    <div><input id="name" type="text" formControlName="dock" /></div>
+    <div class="label"><label for="name"> רציף </label></div>
   </div>
   <div>
-    <input id="name" type="text" formControlName="size" />
-    <label for="name"> גודל </label>
+    <div><input id="name" type="text" formControlName="size" /></div>
+    <div class="label"><label for="name"> גודל </label></div>
   </div>
   <div>
-    <input id="name" type="text" formControlName="description" />
-    <label for="name"> הוראות </label>
+    <div><input id="name" type="text" formControlName="description" /></div>
+    <div class="label"><label for="name"> הוראות </label></div>
   </div>
   <button class="button" type="submit">שמור</button>
 </form>

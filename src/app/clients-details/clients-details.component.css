@@ -1,0 +1,15 @@
+.shipList {
+  display: flex;
+}
+
+.shipList > div {
+  padding-left: 10px;
+}
+
+.label {
+  width: 50px;
+}
+
+form > div > div {
+  display: inline-block;
+}

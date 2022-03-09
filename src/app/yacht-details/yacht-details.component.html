@@ -1,29 +1,36 @@
 <h2>{{ ship.name }}</h2>
-<div>
-  <div>
-    <div>{{ ship.dock }}</div>
-    <div>רציף</div>
-  </div>
-  <div>
-    <div>{{ ship.size }}</div>
-    <div>גודל</div>
-  </div>
-  <div>
-    <div>{{ ship.description }}</div>
-    <div>הוראות</div>
-  </div>
-</div>
-<form [formGroup]="shipForm" (ngSubmit)="onSubmit()">
-  <label
-    formArrayName="services"
-    *ngFor="let service of formServices.controls; let i = index"
-  >
-    <select [formControlName]="i" [(ngModel)]="selectedService[i]">
-      <option *ngFor="let rec of data.servicePeriods" [ngValue]="rec.value">
-        {{ rec.name }}
-      </option>
-    </select>
-    {{ data.services[i].name }}
-  </label>
-  <button>שמור</button>
+<form [formGroup]="shipForm" (ngSubmit)="onSubmit()" class="services">
+  <table>
+    <tr>
+      <td>{{ ship.dock }}</td>
+      <td class="label">רציף</td>
+    </tr>
+    <tr>
+      <td>{{ ship.size }}</td>
+      <td class="label">גודל</td>
+    </tr>
+    <tr>
+      <td>{{ ship.description }}</td>
+      <td class="label">הוראות</td>
+    </tr>
+    <tr
+      formArrayName="services"
+      *ngFor="let service of formServices.controls; let i = index"
+    >
+      <td>
+        <select [formControlName]="i" [(ngModel)]="selectedService[i]">
+          <option *ngFor="let rec of data.servicePeriods" [ngValue]="rec.value">
+            {{ rec.name }}
+          </option>
+        </select>
+      </td>
+      <td>
+        <div class="label">{{ data.services[i].name }}</div>
+      </td>
+    </tr>
+    <tr>
+      <td><button>שמור</button></td>
+      <td></td>
+    </tr>
+  </table>
 </form>

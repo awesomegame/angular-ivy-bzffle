@@ -174,6 +174,19 @@ export class DataService {
       .subscribe((data) => {});
   }
 
+  setServiceToShip(obj) {
+    const headers = { 'content-type': 'application/json' };
+    const body = JSON.stringify(obj);
+
+    this.http
+      .post(
+        'https://8edsojoa99.execute-api.us-east-1.amazonaws.com/prod/setServiceToShip',
+        body,
+        { headers: headers }
+      )
+      .subscribe((data) => {});
+  }
+
   getClient(id) {
     return this.clients.find((it) => it.id == id);
   }

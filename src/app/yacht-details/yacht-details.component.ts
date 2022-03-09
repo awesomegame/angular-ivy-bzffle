@@ -10,7 +10,14 @@ import { DataService } from '../data.service';
 })
 export class YachtDetailsComponent implements OnInit {
   selectedService = [];
-  ship = { name: '', dock: '', description: '', size: '', services: [] };
+  ship = {
+    id: '',
+    name: '',
+    dock: '',
+    description: '',
+    size: '',
+    services: [],
+  };
 
   shipForm = this.formBuilder.group({
     services: new FormArray([]),
@@ -52,9 +59,15 @@ export class YachtDetailsComponent implements OnInit {
   ngOnInit() {}
 
   onSubmit() {
-    this.selectedService.forEach(
-      (s, idx) => (this.ship.services[idx].period = s)
-    );
-    this.data.saveShip(this.ship);
+    this.selectedService.forEach((s, idx) => {
+      if (this.ship.services[idx].period !== s) {
+        this.data.setServiceToShip({
+          shipId: this.ship.id,
+          serviceId: idx,
+          period: s,
+        });
+        this.ship.services[idx].period = s;
+      }
+    });
   }
 }

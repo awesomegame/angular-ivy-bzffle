@@ -1,0 +1,7 @@
+table {
+  display: inherit;
+}
+
+form {
+  display: inline-table;
+}
